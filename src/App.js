@@ -1,19 +1,24 @@
-import { useState } from 'react';
+// Estilização
 import './App.css';
+
+// Components 
 import Contador from './components/contador';
 import Cabecalho from './components/cabecalho';
-import { ContadorProvider } from './contadorProvider';
+
+// Redux
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 function App() {
-  
   return (
     <div className="App">
-      <ContadorProvider>
-        <Cabecalho></Cabecalho>
-        <Contador></Contador>      
-      </ContadorProvider>
+      <Provider store={store}>
+        <Cabecalho /> 
+        <Contador />
+      </Provider>
    </div>
   );
 }
+
 
 export default App;

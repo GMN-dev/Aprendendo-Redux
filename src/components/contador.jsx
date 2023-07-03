@@ -1,14 +1,22 @@
-import { useContext } from "react"
-import { ContadorContexto } from "../contadorProvider"
+import { useDispatch } from "react-redux"
 
 
-export default function Contador(){
-    let [contador, setContador] = useContext(ContadorContexto)
+export default function Cabecalho(){
+    let dispatch = useDispatch();
 
-    return(
-    <>
-        <p> {contador} </p>
-        <button onClick={() => {setContador( contador + 1)}} >+</button>
-        <button onClick={()=>{setContador(contador - 1)}} >-</button>  
+    let incrementar = () => {
+        dispatch({
+            type : 'contador/aumentar'
+        })
+    }
+    let decrementar = () => {
+        dispatch({
+            type : 'contador/diminuir'
+        })
+    }
+    
+    return(<>
+        <button onClick={incrementar} className="btn">+</button>
+        <button onClick={decrementar} className="btn">-</button>
     </>)
 }

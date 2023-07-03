@@ -1,12 +1,12 @@
-import { useContext } from "react"
-import { ContadorContexto } from "../contadorProvider"
+import { useSelector } from "react-redux"
+
 
 export default function Cabecalho(){
-    let [contador, setContador] = useContext(ContadorContexto)
-    
-    return(
-        <>
-         <h1>{contador}</h1>
-        </>
-    )
+ let  state  = useSelector((rootReducer) => {return rootReducer.contadorReducer}) 
+
+    console.log(state)
+
+ return(<>
+        <h1>{state.currentValue}</h1>
+    </>)
 }
